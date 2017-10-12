@@ -1,0 +1,77 @@
+<html>
+<head>
+    <title>
+        Forma
+    </title>
+<script src="jquery-3.2.1.min.js"></script>
+</head>
+<body>
+    <form action="#" method="" id="forma">
+        <input type="text" name="first_name" placeholder="First name">
+        <input type="text" name="last_name" placeholder="Last name">
+        <input type="text" name="b_year" placeholder="Year">
+        <input type="radio" name="tabela" value="tabela1">
+        <input type="radio" name="tabela" value="tabela2">
+        <input type="radio" name="tabela" value="tabela3">
+        <button id="dodaj" >Dodaj</button>
+    </form>
+    <div >
+    <table border="1" id="tabela1">
+        <tr>
+            <th>Name</th>
+            <th>Last name</th>
+            <th>Year</th>
+        </tr>
+    </table>
+    </div>
+    <div>
+    <table border="1" id="tabela2">
+        <tr>
+            <th>Name</th>
+            <th>Last name</th>
+            <th>Year</th>
+        </tr>
+    </table>
+    </div>
+    <div>
+    <table border="1"  id="tabela3">
+        <tr>
+            <th>Name</th>
+            <th>Last name</th>
+            <th>Year</th>
+        </tr>
+    </table>
+    </div>
+        <script>
+     $(document).ready(function() {
+        //console.log( "document loaded" );
+         var rezultati=[];
+         $("#forma").submit(function(e){
+             e.preventDefault();
+             //console.log("ok");
+             $("input:text").each(function(){
+                    //console.log(this.value); 
+                 var td = document.createElement("td");
+                 td.textContent = this.value;
+                 rezultati.push(td);
+                 
+             });
+             //console.log(rezultati);
+            var radio =$("input[type='radio']:checked")[0].value;
+             
+           var tr = document.createElement("tr");
+             for(var i=0;i<rezultati.length;i++){
+                  tr.appendChild(rezultati[i]);
+             }
+            
+             $("#"+radio).append(tr);
+            
+         });
+             
+         
+    });
+
+    </script>
+    
+</body>
+</html>
